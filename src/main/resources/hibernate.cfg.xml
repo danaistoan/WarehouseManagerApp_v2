@@ -7,19 +7,18 @@
     <session-factory>
     
     	<!-- Database connection settings -->
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <!--property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
        	<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/warehouse</property>
         <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">admin</property>
+        <property name="hibernate.connection.password">admin</property-->
+        <!--property name="connection_pool_size">1</property-->
+        
+        <!-- <property name="hibernate.current_session_context_class">thread</property> -->
+        
+        <property name="hibernate.connection.datasource">java:comp/env/jdbc/DatasourcesDB</property>
         
         <!-- SQL dialect -->
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        
-        <property name="connection_pool_size">1</property>
-        
-        <!-- <property name="hibernate.connection.datasource">java:comp/env/jdbc/DatasourcesDB</property> -->
-        
-        <!-- <property name="hibernate.current_session_context_class">thread</property> -->
         
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>

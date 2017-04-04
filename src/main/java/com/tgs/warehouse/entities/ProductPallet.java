@@ -1,18 +1,27 @@
 package com.tgs.warehouse.entities;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.List;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="product_pallet")
-public class ProductPallet {
+public class ProductPallet implements Serializable{
+
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -22,7 +31,11 @@ public class ProductPallet {
 	@Column(name="description")
 	private String description;
 	
-	private List<ProductPackage> packages = new ArrayList<ProductPackage>();
+	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "product_pallet", cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@OneToMany(fetch = FetchType.LAZY)
+	@Cascade({CascadeType.SAVE_UPDATE})
+	@JoinColumn(name = "product_pallet_id", referencedColumnName="id") // id e ala din pallet
+	private List<ProductPackage> packages;
 	
 	public ProductPallet(){
 	}
@@ -57,9 +70,7 @@ public class ProductPallet {
 		return packages;
 	}
 
-	public void setPackages(List<ProductPackage> packages) {
+	public void setPackages(List<ProductPackage> packages) {		
 		this.packages = packages;
-	}	
-	
-	
+	}		
 }
