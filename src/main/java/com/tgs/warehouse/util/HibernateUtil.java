@@ -16,16 +16,11 @@ public class HibernateUtil {
 			Configuration configuration = new Configuration().configure();
 			configuration.addAnnotatedClass(ProductPallet.class);
 			configuration.addAnnotatedClass(ProductPackage.class);
-			/*
-			return configuration
-					.buildSessionFactory(new StandardServiceRegistryBuilder()
-							.applySettings(configuration.getProperties())
-							.build());
-							
-			*/
-			StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-		    sessionFactory = configuration.buildSessionFactory(builder.build());
-		    return sessionFactory;
+
+			StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
+					.applySettings(configuration.getProperties());
+			sessionFactory = configuration.buildSessionFactory(builder.build());
+			return sessionFactory;
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException("There was an error building the factory");
