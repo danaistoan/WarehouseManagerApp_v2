@@ -78,7 +78,7 @@ public class LogisticUnitDAO {
 		try (Session session = HibernateUtil.getSessionFactory().openSession())
 		{
 			Transaction transaction = session.beginTransaction();
-			String hql = "from ProductPallet";
+			String hql = "from ProductPallet pp order by pp.id";
 			TypedQuery<ProductPallet> query = session.createQuery(hql);
 			palletList = query.getResultList();  
 			System.out.println("GetAllPallets with Hibernate executed");

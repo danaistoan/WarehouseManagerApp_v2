@@ -3,6 +3,7 @@ package com.tgs.warehouse.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -32,7 +33,7 @@ public class ProductPallet implements Serializable{
 	private String description;
 	
 	//@OneToMany(fetch = FetchType.LAZY, mappedBy = "product_pallet", cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.EAGER)
 	@Cascade({CascadeType.SAVE_UPDATE})
 	@JoinColumn(name = "product_pallet_id", referencedColumnName="id") // id e ala din pallet
 	private List<ProductPackage> packages;
