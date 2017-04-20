@@ -17,11 +17,20 @@
     <script type="text/javascript" src="resources/js/jquery-3.2.0.js"></script>
     <script type="text/javascript" src="resources/js/jquery-ui.js"></script>
     <script type="text/javascript" src="resources/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="resources/js/jquery.validate.js"></script>
+    <!--<script type="text/javascript" src="resources/js/additional-methods.js"></script>-->
     <script type="text/javascript" src="resources/js/myscripts.js"></script>
 </head>
 <body id="dt_example">
 <div id="container">
     <div id="demo_jui">
+        <div id="userInfo" align="right"> </div>
+
+        <form id="logoutForm" action="warehouseOperations" method="POST" align="right">
+            <input type="hidden" name="action" value="logout"/>
+            <a onclick="logout()">Logout</a>
+        </form>
+
         <div class="pageTitle">Pallet list</div>
 
         <div class="addPallet">
@@ -43,23 +52,18 @@
         <div id="dialog-form" title="Add new pallet" style="display: none">
             <p class="validateTips">All form fields are required.</p>
 
-            <form>
-                <fieldset>
-                    <label for="description">Description</label>
-                    <input type="text" name="description" id="description" class="text ui-widget-content ui-corner-all">
-                    <br><br>
-                    <label for="pack1Desc">Package1 description</label>
-                    <input type="text" name="pack1Desc" id="pack1Desc" class="text ui-widget-content ui-corner-all"><br>
-                    <label for="pack1Type">Package1 type</label>
-                    <input type="text" name="pack1Type" id="pack1Type" class="text ui-widget-content ui-corner-all">
-                    <br><br>
-                    <label for="pack2Desc">Package2 description</label>
-                    <input type="text" name="pack2Desc" id="pack2Desc" class="text ui-widget-content ui-corner-all"><br>
-                    <label for="pack2Type">Package2 type</label>
-                    <input type="text" name="pack2Type" id="pack2Type" class="text ui-widget-content ui-corner-all">
+            <form id="form">
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description" />
+                <br/><br/>
 
-                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-                </fieldset>
+                <table id="packageList">
+                        <td>Package description</td>
+                        <td>Package type</td>
+                    </tr>
+                </table>
+
+                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px" />
             </form>
         </div>
     </div>
@@ -68,6 +72,6 @@
 </html>
 <script>
     $(document).ready(function () {
-        loadDataTable();
+        loadUserInfo();
     });
 </script>

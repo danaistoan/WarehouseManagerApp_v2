@@ -21,7 +21,6 @@ import javax.persistence.Table;
 @Table(name="product_pallet")
 public class ProductPallet implements Serializable{
 
-	
 	private static final long serialVersionUID = 1L;
 
 	@Id

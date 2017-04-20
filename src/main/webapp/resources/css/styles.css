@@ -1,3 +1,7 @@
+a {
+    cursor: pointer;
+}
+
 td.details-control {
     background: url('../img/details_open.png') no-repeat center center;
     cursor: pointer;
@@ -23,6 +27,11 @@ td.delete-control {
     font-weight: bold;
 }
 .addPallet {
-    text-align: right;
+    text-align: left;
     margin-bottom: 10px;
+}
+
+.loginFailure {
+    text-align: center;
+    color: #ff0000;
 }

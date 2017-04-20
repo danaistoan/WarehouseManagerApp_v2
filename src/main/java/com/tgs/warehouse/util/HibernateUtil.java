@@ -6,6 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.tgs.warehouse.entities.ProductPackage;
 import com.tgs.warehouse.entities.ProductPallet;
+import com.tgs.warehouse.entities.User;
 
 public class HibernateUtil {
 
@@ -16,6 +17,7 @@ public class HibernateUtil {
 			Configuration configuration = new Configuration().configure();
 			configuration.addAnnotatedClass(ProductPallet.class);
 			configuration.addAnnotatedClass(ProductPackage.class);
+			configuration.addAnnotatedClass(User.class);
 
 			StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties());
